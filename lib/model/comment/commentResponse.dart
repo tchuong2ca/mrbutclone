@@ -1,7 +1,7 @@
-import 'package:mrbutclone/model/commentData.dart';
+import 'package:mrbutclone/model/comment/commentData.dart';
 import 'package:mrbutclone/model/listData.dart';
 
-import 'mess.dart';
+import '../mess.dart';
 
 class CommentResponse{
   List<CommentData>? _commentData;

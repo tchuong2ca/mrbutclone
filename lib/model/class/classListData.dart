@@ -1,5 +1,5 @@
 
-class ListData {
+class ClassListData {
   String? courseId;
   String? schoolId;
   String? folderId;
@@ -21,21 +21,21 @@ class ListData {
   int? totalLesson;
   int? totalChapter;
   int? accessLimit;
+  String? openDate;
   String? createDate;
   String? createUser;
-  String? updateDate;
-  String? updateUser;
   String? grantStatus;
   int? rawGrade;
   String? cap;
   String? teacherUsername;
   String? teacherFullName;
+  int? finishedDay;
   int? currentRating;
   bool? courseIt;
 
-  ListData({this.courseId, this.schoolId, this.folderId, this.type, this.code, this.name, this.shortname, this.keyword, this.image, this.intro, this.status, this.releaseStatus, this.learningmode, this.sortorder, this.studentCount, this.price, this.salePrice, this.totalIncome, this.totalLesson, this.totalChapter, this.accessLimit, this.createDate, this.createUser, this.updateDate, this.updateUser, this.grantStatus, this.rawGrade, this.cap, this.teacherUsername, this.teacherFullName, this.currentRating, this.courseIt});
+  ClassListData({this.courseId, this.schoolId, this.folderId, this.type, this.code, this.name, this.shortname, this.keyword, this.image, this.intro, this.status, this.releaseStatus, this.learningmode, this.sortorder, this.studentCount, this.price, this.salePrice, this.totalIncome, this.totalLesson, this.totalChapter, this.accessLimit, this.openDate, this.createDate, this.createUser, this.grantStatus, this.rawGrade, this.cap, this.teacherUsername, this.teacherFullName, this.finishedDay, this.currentRating, this.courseIt});
 
-  ListData.fromJson(Map<String, dynamic> json) {
+  ClassListData.fromJson(Map<String, dynamic> json) {
     this.courseId = json["courseId"];
     this.schoolId = json["schoolId"];
     this.folderId = json["folderId"];
@@ -57,15 +57,15 @@ class ListData {
     this.totalLesson = json["totalLesson"];
     this.totalChapter = json["totalChapter"];
     this.accessLimit = json["accessLimit"];
+    this.openDate = json["openDate"];
     this.createDate = json["createDate"];
     this.createUser = json["createUser"];
-    this.updateDate = json["updateDate"];
-    this.updateUser = json["updateUser"];
     this.grantStatus = json["grantStatus"];
     this.rawGrade = json["rawGrade"];
     this.cap = json["cap"];
     this.teacherUsername = json["teacherUsername"];
     this.teacherFullName = json["teacherFullName"];
+    this.finishedDay = json["finishedDay"];
     this.currentRating = json["currentRating"];
     this.courseIt = json["courseIT"];
   }
@@ -93,15 +93,15 @@ class ListData {
     data["totalLesson"] = this.totalLesson;
     data["totalChapter"] = this.totalChapter;
     data["accessLimit"] = this.accessLimit;
+    data["openDate"] = this.openDate;
     data["createDate"] = this.createDate;
     data["createUser"] = this.createUser;
-    data["updateDate"] = this.updateDate;
-    data["updateUser"] = this.updateUser;
     data["grantStatus"] = this.grantStatus;
     data["rawGrade"] = this.rawGrade;
     data["cap"] = this.cap;
     data["teacherUsername"] = this.teacherUsername;
     data["teacherFullName"] = this.teacherFullName;
+    data["finishedDay"] = this.finishedDay;
     data["currentRating"] = this.currentRating;
     data["courseIT"] = this.courseIt;
     return data;

@@ -1,20 +1,30 @@
 
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mrbutclone/profile.dart';
-import 'package:mrbutclone/questions.dart';
+import 'package:localize/lang_code.dart';
+import 'package:localize/localize.dart';
+import 'package:mrbutclone/ui/authentication.dart';
+import 'ui/profile.dart';
+import 'ui/questions.dart';
+import 'package:splashscreen/splashscreen.dart';
 
-import 'classes.dart';
-import 'courses.dart';
-import 'home.dart';
+import 'ui/classes.dart';
+import 'ui/courses.dart';
+import 'ui/home.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Translate().withDefaultLocale(LangCode.vi);
+  //true if allow
+  await Translate().setAcceptMissingKey(false);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override
@@ -32,13 +42,29 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity
 
       ),
-      home: homee(),
+      home: animation(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+class animation extends StatelessWidget {
+  const animation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+        splash: Icons.flutter_dash_rounded,
+        nextScreen: homee(),
+        duration: 2,
+        splashTransition: SplashTransition.scaleTransition
+    );
+  }
+}
+
 
 class homee extends StatefulWidget {
 
@@ -54,7 +80,7 @@ class _homeeState extends State<homee> {
 
   final List<Widget> _widgetOptions = <Widget>[
     Home(),
-    Courses(),
+    Authentication(),
     Questions(),
     Classes(),
     Profile()
@@ -85,26 +111,26 @@ class _homeeState extends State<homee> {
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.lightBlueAccent,
-        items:  <BottomNavigationBarItem>[
+        items:   <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
-            label: 'Trang chủ',
+            label: 'home'.localize,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/Vector (1).png"),
-            label: 'Khoá học',
+            icon: Icon(CupertinoIcons.book_circle),
+            label: 'course'.localize,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.question_answer),
-            label: 'Hỏi đáp',
+            label: 'Q&A'.localize,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.class_),
-            label: 'Lớp học',
+            label: 'class'.localize,
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.person_alt_circle_fill),
-            label: 'Cá nhân',
+            label: 'profile'.localize,
           ),
         ],
         currentIndex: _selectedIndex,
